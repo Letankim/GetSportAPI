@@ -26,7 +26,6 @@ namespace GetSportAPI.Controllers
 
         private (TimeSpan OpenTime, TimeSpan CloseTime) GetCourtOperatingHours(Court court)
         {
-            // Use court's Startdate and Enddate time components if available, else default to 6:00 AM–10:00 PM
             var openTime = court.Startdate.HasValue ? court.Startdate.Value.TimeOfDay : new TimeSpan(6, 0, 0);
             var closeTime = court.Enddate.HasValue ? court.Enddate.Value.TimeOfDay : new TimeSpan(22, 0, 0);
             return (openTime, closeTime);
@@ -229,7 +228,7 @@ namespace GetSportAPI.Controllers
                 var currentTime = openDateTime;
                 while (currentTime < closeDateTime)
                 {
-                    var slotEndTime = currentTime.AddMinutes(60); // Fixed 60-minute slots
+                    var slotEndTime = currentTime.AddMinutes(60); 
                     if (slotEndTime > closeDateTime) break;
 
                     var newSlot = new Courtslot
