@@ -290,3 +290,5 @@ D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\GetSportA
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\ref\GetSportAPI.dll
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\GetSportAPI.staticwebassets.runtime.json
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\GetSportAPI.sourcelink.json
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\payos-lib-backend-dotnet.dll

@@ -2264,6 +2264,22 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
         }
       },
+      "payOS/1.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/net6.0/payos-lib-backend-dotnet.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/payos-lib-backend-dotnet.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.6.2": {
         "type": "package",
         "dependencies": {
@@ -6932,6 +6948,20 @@
         "nuget.versioning.nuspec"
       ]
     },
+    "payOS/1.0.9": {
+      "sha512": "LPfIWXg0Oo8mPk8l3otrqtH4iQcjaG+ughDp2DS3gS52s7bs8eEtU+uXflu32GPDCFKksfFyAAOLUoPDva4/Gw==",
+      "type": "package",
+      "path": "payos/1.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/payos-lib-backend-dotnet.dll",
+        "lib/net6.0/payos-lib-backend-dotnet.runtimeconfig.json",
+        "payos.1.0.9.nupkg.sha512",
+        "payos.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.6.2": {
       "sha512": "+NB4UYVYN6AhDSjW0IJAd1AGD8V33gemFNLPaxKTtPkHB+HaKAKf9MGAEUPivEWvqeQfcKIw8lJaHq6LHljRuw==",
       "type": "package",
@@ -8218,7 +8248,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.5",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
       "Swashbuckle.AspNetCore >= 6.6.2",
-      "System.IdentityModel.Tokens.Jwt >= 8.12.0"
+      "System.IdentityModel.Tokens.Jwt >= 8.12.0",
+      "payOS >= 1.0.9"
     ]
   },
   "packageFolders": {
@@ -8315,6 +8346,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[8.12.0, )"
+          },
+          "payOS": {
+            "target": "Package",
+            "version": "[1.0.9, )"
           }
         },
         "imports": [

@@ -1,10 +1,12 @@
-﻿namespace GetSportAPI.Models.Enum
+﻿using Microsoft.Extensions.Hosting;
+
+namespace GetSportAPI.Models.Enum
 {
     public static class UserRole
     {
-        public const string Admin = "Admin";         
-        public const string Staff = "Staff";        
-        public const string Customer = "Customer";  
+        public const string Admin = "Admin";
+        public const string Staff = "Staff";
+        public const string Customer = "Customer";
     }
 
     public static class UserStatus
@@ -17,10 +19,10 @@
 
     public static class BlogStatus
     {
-        public const string Draft = "Draft";          
+        public const string Draft = "Draft";
         public const string Published = "Published";
         public const string Banned = "Banned";
-        public const string Deleted = "Deleted"; 
+        public const string Deleted = "Deleted";
     }
 
     public static class CourtStatus
@@ -44,5 +46,37 @@
     {
         public const string Local = "https://localhost:7260/api/images/view/";
         public const string Production = "https://demo.com/images/";
+    }
+
+    public static class HostBookingUrl
+    {
+        private const string Local = "https://localhost:7260/booking/";
+        private const string Production = "https://demo.com/booking/";
+
+        public static string GetBaseUrl(HostEnvironment env)
+        {
+            return env switch
+            {
+                HostEnvironment.Local => Local,
+                HostEnvironment.Production => Production,
+                _ => throw new ArgumentOutOfRangeException(nameof(env), env, null)
+            };
+        }
+
+        public static string GetCancelUrl(HostEnvironment env, int bookingId)
+        {
+            return $"{GetBaseUrl(env)}cancel?bookingId={bookingId}";
+        }
+
+        public static string GetSuccessUrl(HostEnvironment env, int bookingId)
+        {
+            return $"{GetBaseUrl(env)}success?bookingId={bookingId}";
+        }
+
+        public enum HostEnvironment
+        {
+            Local,
+            Production
+        }
     }
 }

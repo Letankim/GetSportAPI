@@ -1,5 +1,184 @@
 [
   {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "Create",
+    "RelativePath": "api/Account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.AccountCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetAll",
+    "RelativePath": "api/Account",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "isActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetById",
+    "RelativePath": "api/Account/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "Update",
+    "RelativePath": "api/Account/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.AccountUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "Delete",
+    "RelativePath": "api/Account/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetTransactions",
+    "RelativePath": "api/Account/{id}/transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetWallet",
+    "RelativePath": "api/Account/{id}/wallet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "UpdateWallet",
+    "RelativePath": "api/Account/{id}/wallet",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.WalletUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetMyAccount",
+    "RelativePath": "api/Account/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "UpdateMyAccount",
+    "RelativePath": "api/Account/my",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.AccountUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.AccountController",
+    "Method": "GetMyTransactions",
+    "RelativePath": "api/Account/my/transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GetSportAPI.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -339,8 +518,135 @@
   },
   {
     "ContainingType": "GetSportAPI.Controllers.CourtController",
+    "Method": "GetCourtFeedbacks",
+    "RelativePath": "api/Court/{id}/feedbacks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtController",
     "Method": "GetMyCourts",
     "RelativePath": "api/Court/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "Create",
+    "RelativePath": "api/CourtBooking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.Controllers.CourtBookingController\u002BCourtBookingCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "GetAll",
+    "RelativePath": "api/CourtBooking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "GetById",
+    "RelativePath": "api/CourtBooking/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "Update",
+    "RelativePath": "api/CourtBooking/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.Controllers.CourtBookingController\u002BCourtBookingUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "Delete",
+    "RelativePath": "api/CourtBooking/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "CheckPaymentStatus",
+    "RelativePath": "api/CourtBooking/{id}/payment-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtBookingController",
+    "Method": "GetMyBookings",
+    "RelativePath": "api/CourtBooking/my",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -491,6 +797,196 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "Create",
+    "RelativePath": "api/CourtStatusHistory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.CourtStatusHistoryCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/CourtStatusHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courtId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "GetById",
+    "RelativePath": "api/CourtStatusHistory/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "Update",
+    "RelativePath": "api/CourtStatusHistory/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.CourtStatusHistoryUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "Delete",
+    "RelativePath": "api/CourtStatusHistory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.CourtStatusHistoryController",
+    "Method": "GetByCourtId",
+    "RelativePath": "api/CourtStatusHistory/court/{courtId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "Create",
+    "RelativePath": "api/Feedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.FeedbackCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "GetAll",
+    "RelativePath": "api/Feedback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "GetById",
+    "RelativePath": "api/Feedback/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "Update",
+    "RelativePath": "api/Feedback/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.FeedbackUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "Delete",
+    "RelativePath": "api/Feedback/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.FeedbackController",
+    "Method": "GetMyFeedbacks",
+    "RelativePath": "api/Feedback/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GetSportAPI.Controllers.ImageHelperController",
     "Method": "GetImage",
     "RelativePath": "api/images/view/{filename}",
@@ -501,6 +997,786 @@
       {
         "Name": "filename",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "Create",
+    "RelativePath": "api/OwnerPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.OwnerPackageCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "GetAll",
+    "RelativePath": "api/OwnerPackage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "GetById",
+    "RelativePath": "api/OwnerPackage/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "Update",
+    "RelativePath": "api/OwnerPackage/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.OwnerPackageUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "Delete",
+    "RelativePath": "api/OwnerPackage/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "CheckPaymentStatus",
+    "RelativePath": "api/OwnerPackage/{id}/payment-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.OwnerPackageController",
+    "Method": "GetMyOwnerPackages",
+    "RelativePath": "api/OwnerPackage/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PackageController",
+    "Method": "Create",
+    "RelativePath": "api/Package",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PackageCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PackageController",
+    "Method": "GetAll",
+    "RelativePath": "api/Package",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "isActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PackageController",
+    "Method": "GetById",
+    "RelativePath": "api/Package/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PackageController",
+    "Method": "Update",
+    "RelativePath": "api/Package/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PackageUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PackageController",
+    "Method": "Delete",
+    "RelativePath": "api/Package/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymateJoinController",
+    "Method": "Create",
+    "RelativePath": "api/PlaymateJoin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PlaymateJoinCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymateJoinController",
+    "Method": "GetAll",
+    "RelativePath": "api/PlaymateJoin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymateJoinController",
+    "Method": "GetById",
+    "RelativePath": "api/PlaymateJoin/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymateJoinController",
+    "Method": "Delete",
+    "RelativePath": "api/PlaymateJoin/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymateJoinController",
+    "Method": "GetMyJoins",
+    "RelativePath": "api/PlaymateJoin/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "Create",
+    "RelativePath": "api/PlaymatePost",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PlaymatePostCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "GetAll",
+    "RelativePath": "api/PlaymatePost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "GetById",
+    "RelativePath": "api/PlaymatePost/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "Update",
+    "RelativePath": "api/PlaymatePost/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PlaymatePostUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "Delete",
+    "RelativePath": "api/PlaymatePost/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PlaymatePostController",
+    "Method": "GetMyPosts",
+    "RelativePath": "api/PlaymatePost/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PointTransactionController",
+    "Method": "Create",
+    "RelativePath": "api/PointTransaction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.PointTransactionCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PointTransactionController",
+    "Method": "GetAll",
+    "RelativePath": "api/PointTransaction",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PointTransactionController",
+    "Method": "GetById",
+    "RelativePath": "api/PointTransaction/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.PointTransactionController",
+    "Method": "GetMyTransactions",
+    "RelativePath": "api/PointTransaction/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "Create",
+    "RelativePath": "api/UserPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.UserPackageCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "GetAll",
+    "RelativePath": "api/UserPackage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "isActive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "GetById",
+    "RelativePath": "api/UserPackage/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "Update",
+    "RelativePath": "api/UserPackage/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.UserPackageUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "Delete",
+    "RelativePath": "api/UserPackage/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "CheckPaymentStatus",
+    "RelativePath": "api/UserPackage/{id}/payment-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.UserPackageController",
+    "Method": "GetMyUserPackages",
+    "RelativePath": "api/UserPackage/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "Create",
+    "RelativePath": "api/Voucher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.VoucherCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "GetAll",
+    "RelativePath": "api/Voucher",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "GetById",
+    "RelativePath": "api/Voucher/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "Update",
+    "RelativePath": "api/Voucher/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.VoucherUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "Delete",
+    "RelativePath": "api/Voucher/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "AssignVoucher",
+    "RelativePath": "api/Voucher/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.Controllers.VoucherController\u002BAssignVoucherDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "CheckVoucher",
+    "RelativePath": "api/Voucher/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Code",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "GetAllVoucherHistory",
+    "RelativePath": "api/Voucher/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.VoucherController",
+    "Method": "GetMyVouchers",
+    "RelativePath": "api/Voucher/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "Create",
+    "RelativePath": "api/Wallet",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.WalletCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "GetAll",
+    "RelativePath": "api/Wallet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "minBalance",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/Wallet/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "AddFunds",
+    "RelativePath": "api/Wallet/{userId}/add-funds",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.WalletAddFundsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "GetTransactions",
+    "RelativePath": "api/Wallet/{userId}/transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.WalletController",
+    "Method": "WithdrawFunds",
+    "RelativePath": "api/Wallet/{userId}/withdraw-funds",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "GetSportAPI.DTO.WalletWithdrawFundsDto",
         "IsRequired": true
       }
     ],
