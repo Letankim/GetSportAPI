@@ -1591,6 +1591,30 @@
         }
       }
     },
+    "/api/HealthServerCheck/ping": {
+      "get": {
+        "tags": [
+          "HealthServerCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HealthServerCheck/check-db": {
+      "get": {
+        "tags": [
+          "HealthServerCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/images/view/{filename}": {
       "get": {
         "tags": [

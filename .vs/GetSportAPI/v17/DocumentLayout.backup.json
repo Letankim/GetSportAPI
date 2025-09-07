@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\healthservercheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\healthservercheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +22,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HealthServerCheckController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\HealthServerCheckController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\HealthServerCheckController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:24:54.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAwOYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:23:29.903Z"
             },
             {
               "$type": "Document",
@@ -28,7 +61,7 @@
               "RelativeDocumentMoniker": "GetSportAPI\\Program.cs",
               "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Program.cs",
               "RelativeToolTip": "GetSportAPI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T13:13:45.433Z",
               "EditorCaption": ""

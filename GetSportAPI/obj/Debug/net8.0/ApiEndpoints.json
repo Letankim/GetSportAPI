@@ -987,6 +987,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GetSportAPI.Controllers.HealthServerCheckController",
+    "Method": "CheckDatabase",
+    "RelativePath": "api/HealthServerCheck/check-db",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GetSportAPI.Controllers.HealthServerCheckController",
+    "Method": "Ping",
+    "RelativePath": "api/HealthServerCheck/ping",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GetSportAPI.Controllers.ImageHelperController",
     "Method": "GetImage",
     "RelativePath": "api/images/view/{filename}",

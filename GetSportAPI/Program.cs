@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<GetSportContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<PayOSService, PayOSService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -24,33 +25,43 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-            ClockSkew = TimeSpan.FromMinutes(5) 
+            ClockSkew = TimeSpan.FromMinutes(5)
         };
     });
 
 builder.Services.AddAuthorization();
+
 builder.Services.AddCors(options =>
 {
-options.AddPolicy("AllowCros", policy =>
-{
-    policy.WithOrigins("http://localhost:3000").
-         AllowAnyHeader()
-              .AllowAnyMethod();
+    options.AddPolicy("AllowCros", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
-});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors("AllowCros");
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
-app.UseStaticFiles();
+
 app.Run();
