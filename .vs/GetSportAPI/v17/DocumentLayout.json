@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +34,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "GetSportAPI\\appsettings.json",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
+              "RelativeToolTip": "GetSportAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-07T13:40:07.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "HealthServerCheckController.cs",
               "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\HealthServerCheckController.cs",
               "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
@@ -38,12 +55,11 @@
               "RelativeToolTip": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:24:54.038Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T13:24:54.038Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\AuthController.cs",
@@ -55,7 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Program.cs",
               "RelativeDocumentMoniker": "GetSportAPI\\Program.cs",
