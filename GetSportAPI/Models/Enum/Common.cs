@@ -5,7 +5,7 @@ namespace GetSportAPI.Models.Enum
     public static class UserRole
     {
         public const string Admin = "Admin";
-        public const string Staff = "Staff";
+        public const string Staff = "Owner";
         public const string Customer = "Customer";
     }
 
@@ -44,14 +44,14 @@ namespace GetSportAPI.Models.Enum
 
     public static class HostImageUrl
     {
-        public const string Local = "https://localhost:7260/api/images/view/";
+        public const string Local = "https://api.getsport.3docorp.vn/api/images/view/";
         public const string Production = "https://demo.com/images/";
     }
 
     public static class HostBookingUrl
     {
-        private const string Local = "https://localhost:7260/booking/";
-        private const string Production = "https://demo.com/booking/";
+        private const string Local = "http://localhost:5173/booking/callback/";
+        private const string Production = "https://demo.com/booking/callback/";
 
         public static string GetBaseUrl(HostEnvironment env)
         {

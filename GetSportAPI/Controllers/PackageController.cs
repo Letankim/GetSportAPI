@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using GetSportAPI.Models.Generated;
 using GetSportAPI.Models.Enum;
 using GetSportAPI.DTO;
-using Net.payOS;
-using Net.payOS.Types;
+using GetSportAPI.Params;
 using System.ComponentModel.DataAnnotations;
 
 namespace GetSportAPI.Controllers
@@ -20,6 +19,7 @@ namespace GetSportAPI.Controllers
     public class PackageController : ControllerBase
     {
         private readonly GetSportContext _context;
+        private readonly string[] _validSortFields = { "Name", "Price", "Durationdays", "Createat", "Updateat" };
 
         public PackageController(GetSportContext context)
         {
@@ -47,7 +47,7 @@ namespace GetSportAPI.Controllers
             {
                 var package = new Package
                 {
-                    Name = dto.Name.Trim(),
+                    Name = dto.Name?.Trim(),
                     Description = dto.Description?.Trim(),
                     Price = dto.Price,
                     Durationdays = dto.Durationdays,
@@ -72,6 +72,10 @@ namespace GetSportAPI.Controllers
 
                 return Ok(new { StatusCode = 200, Status = "Success", Message = "Package created successfully.", Data = responseData });
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = ex.Message });
+            }
             catch (Exception)
             {
                 return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = "An error occurred while creating the package." });
@@ -79,14 +83,103 @@ namespace GetSportAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll([FromQuery] bool? isActive = null)
+        public async Task<ActionResult> GetAll([FromQuery] PackageFilterParams filterParams)
         {
+            // Validate query parameters
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
+            }
+
+            // Build query
             var query = _context.Packages.AsQueryable();
 
-            if (isActive.HasValue)
+            // Apply filters
+            if (!string.IsNullOrEmpty(filterParams.Search))
             {
-                query = query.Where(p => p.Isactive == isActive.Value);
+                query = query.Where(p => p.Name != null && p.Name.ToLower().Contains(filterParams.Search.ToLower()));
             }
+
+            if (filterParams.MinPrice.HasValue)
+            {
+                query = query.Where(p => p.Price >= filterParams.MinPrice.Value);
+            }
+
+            if (filterParams.MaxPrice.HasValue)
+            {
+                query = query.Where(p => p.Price <= filterParams.MaxPrice.Value);
+            }
+
+            if (filterParams.MinDurationDays.HasValue)
+            {
+                query = query.Where(p => p.Durationdays >= filterParams.MinDurationDays.Value);
+            }
+
+            if (filterParams.MaxDurationDays.HasValue)
+            {
+                query = query.Where(p => p.Durationdays <= filterParams.MaxDurationDays.Value);
+            }
+
+            if (filterParams.IsActive.HasValue)
+            {
+                query = query.Where(p => p.Isactive == filterParams.IsActive.Value);
+            }
+
+            if (filterParams.StartCreateDate.HasValue)
+            {
+                query = query.Where(p => p.Createat >= filterParams.StartCreateDate.Value);
+            }
+
+            if (filterParams.EndCreateDate.HasValue)
+            {
+                query = query.Where(p => p.Createat <= filterParams.EndCreateDate.Value);
+            }
+
+            if (filterParams.StartUpdateDate.HasValue)
+            {
+                query = query.Where(p => p.Updateat != null && p.Updateat >= filterParams.StartUpdateDate.Value);
+            }
+
+            if (filterParams.EndUpdateDate.HasValue)
+            {
+                query = query.Where(p => p.Updateat != null && p.Updateat <= filterParams.EndUpdateDate.Value);
+            }
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply sorting
+            var sortBy = filterParams.SortBy?.ToLower() ?? "createat";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "name" => isDescending ? query.OrderByDescending(p => p.Name) : query.OrderBy(p => p.Name),
+                "price" => isDescending ? query.OrderByDescending(p => p.Price) : query.OrderBy(p => p.Price),
+                "durationdays" => isDescending ? query.OrderByDescending(p => p.Durationdays) : query.OrderBy(p => p.Durationdays),
+                "updateat" => isDescending ? query.OrderByDescending(p => p.Updateat) : query.OrderBy(p => p.Updateat),
+                _ => isDescending ? query.OrderByDescending(p => p.Createat) : query.OrderBy(p => p.Createat)
+            };
+
+            // Apply pagination
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
 
             var packages = await query.ToListAsync();
 
@@ -102,12 +195,32 @@ namespace GetSportAPI.Controllers
                 Updateat = p.Updateat
             }).ToList();
 
-            return Ok(new { StatusCode = 200, Status = "Success", Message = "Packages retrieved successfully.", Data = responseData });
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "Packages retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
+            if (id <= 0)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid package ID." });
+            }
+
             var package = await _context.Packages.FirstOrDefaultAsync(p => p.PackageId == id);
 
             if (package == null)
@@ -147,6 +260,11 @@ namespace GetSportAPI.Controllers
                 return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid input data.", Errors = errors });
             }
 
+            if (id <= 0)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid package ID." });
+            }
+
             var package = await _context.Packages.FirstOrDefaultAsync(p => p.PackageId == id);
 
             if (package == null)
@@ -179,6 +297,10 @@ namespace GetSportAPI.Controllers
 
                 return Ok(new { StatusCode = 200, Status = "Success", Message = "Package updated successfully.", Data = responseData });
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = ex.Message });
+            }
             catch (Exception)
             {
                 return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = "An error occurred while updating the package." });
@@ -189,6 +311,11 @@ namespace GetSportAPI.Controllers
         [Authorize(Roles = $"{UserRole.Admin}")]
         public async Task<ActionResult> Delete(int id)
         {
+            if (id <= 0)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid package ID." });
+            }
+
             var package = await _context.Packages.FirstOrDefaultAsync(p => p.PackageId == id);
 
             if (package == null)

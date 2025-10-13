@@ -2,7 +2,6 @@
 
 namespace GetSportAPI.DTO
 {
-
     public class PlaymatePostUpdateDto
     {
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]

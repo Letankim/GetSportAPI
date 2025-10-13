@@ -292,3 +292,9 @@ D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\GetSportA
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\obj\Debug\net8.0\GetSportAPI.sourcelink.json
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\payos-lib-backend-dotnet.dll
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\web.config
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\appsettings.json
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\GetSportAPI.deps.json
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\GetSportAPI.runtimeconfig.json
+D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\bin\Debug\net8.0\publish\GetSportAPI.staticwebassets.endpoints.json

@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GetSportAPI.Models.Generated;
-using GetSportAPI.DTO;
 using GetSportAPI.Models.Enum;
-using System.Security.Claims;
+using GetSportAPI.DTO;
+using GetSportAPI.Params;
 using System.ComponentModel.DataAnnotations;
 
 namespace GetSportAPI.Controllers
@@ -18,6 +19,7 @@ namespace GetSportAPI.Controllers
     public class CourtSlotController : ControllerBase
     {
         private readonly GetSportContext _context;
+        private readonly string[] _validSortFields = { "Starttime", "Endtime", "Slotnumber", "CourtLocation", "OwnerName" };
 
         public CourtSlotController(GetSportContext context)
         {
@@ -29,6 +31,64 @@ namespace GetSportAPI.Controllers
             var openTime = court.Startdate.HasValue ? court.Startdate.Value.TimeOfDay : new TimeSpan(6, 0, 0);
             var closeTime = court.Enddate.HasValue ? court.Enddate.Value.TimeOfDay : new TimeSpan(22, 0, 0);
             return (openTime, closeTime);
+        }
+
+        // DTOs
+        public class CourtSlotCreateDto
+        {
+            [Required(ErrorMessage = "Court ID is required.")]
+            public int CourtId { get; set; }
+
+            [Required(ErrorMessage = "Slot number is required.")]
+            public int Slotnumber { get; set; }
+
+            [Required(ErrorMessage = "Start time is required.")]
+            public DateTime Starttime { get; set; }
+
+            [Required(ErrorMessage = "End time is required.")]
+            public DateTime Endtime { get; set; }
+
+            [Required(ErrorMessage = "Availability status is required.")]
+            public bool Isavailable { get; set; }
+        }
+
+        public class BulkCourtSlotCreateDto
+        {
+            [Required(ErrorMessage = "Court ID is required.")]
+            public int CourtId { get; set; }
+
+            [Required(ErrorMessage = "Start date-time is required.")]
+            public DateTime StartDateTime { get; set; }
+
+            [Required(ErrorMessage = "End date-time is required.")]
+            public DateTime EndDateTime { get; set; }
+
+            [Required(ErrorMessage = "Duration is required.")]
+            public int Duration { get; set; }
+        }
+
+        public class CourtSlotUpdateDto
+        {
+            public int? Slotnumber { get; set; }
+            public DateTime? Starttime { get; set; }
+            public DateTime? Endtime { get; set; }
+            public bool? Isavailable { get; set; }
+        }
+
+        public class CourtSlotResponseDto
+        {
+            public int SlotId { get; set; }
+            public int CourtId { get; set; }
+            public string CourtName { get; set; } = null!;
+            public string CourtLocation { get; set; } = null!;
+            public List<string> CourtImageUrls { get; set; } = new List<string>();
+            public decimal CourtPricePerHour { get; set; }
+            public int OwnerId { get; set; }
+            public string OwnerName { get; set; } = null!;
+            public int SlotNumber { get; set; }
+            public DateTime StartTime { get; set; }
+            public DateTime EndTime { get; set; }
+            public bool IsAvailable { get; set; }
         }
 
         [HttpPost]
@@ -68,7 +128,6 @@ namespace GetSportAPI.Controllers
                 return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid slot duration. Allowed durations are 30, 45, 60, 90, 120 minutes." });
             }
 
-            // Check if slot time is within court's daily operating hours
             var (openTime, closeTime) = GetCourtOperatingHours(court);
             if (dto.Starttime.TimeOfDay < openTime || dto.Endtime.TimeOfDay > closeTime)
             {
@@ -109,12 +168,16 @@ namespace GetSportAPI.Controllers
                 {
                     SlotId = slot.SlotId,
                     CourtId = slot.CourtId,
-                    Slotnumber = slot.Slotnumber,
-                    Starttime = slot.Starttime,
-                    Endtime = slot.Endtime,
-                    Isavailable = slot.Isavailable,
+                    CourtName = court.Owner.Fullname ?? "Unknown",
                     CourtLocation = court.Location ?? "Unknown",
-                    OwnerId = court.OwnerId
+                    CourtImageUrls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                    CourtPricePerHour = court.Priceperhour,
+                    OwnerId = court.OwnerId,
+                    OwnerName = court.Owner?.Fullname ?? "Unknown",
+                    SlotNumber = slot.Slotnumber,
+                    StartTime = slot.Starttime,
+                    EndTime = slot.Endtime,
+                    IsAvailable = slot.Isavailable
                 };
 
                 return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slot created successfully.", Data = responseData });
@@ -123,6 +186,139 @@ namespace GetSportAPI.Controllers
             {
                 return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = $"An error occurred while creating the court slot: {ex.Message}" });
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAll([FromQuery] CourtSlotFilterParams filterParams)
+        {
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
+            }
+
+            bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+            int? accountId = null;
+            string? userRole = null;
+            if (isAuthenticated)
+            {
+                var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userIdClaim != null && int.TryParse(userIdClaim, out int parsedId))
+                {
+                    accountId = parsedId;
+                }
+                userRole = User.FindFirstValue(ClaimTypes.Role);
+            }
+
+            var isAdminOrStaff = userRole == UserRole.Admin || userRole == UserRole.Staff;
+
+            var query = _context.Courtslots
+                .Include(s => s.Court)
+                .ThenInclude(c => c.Owner)
+                .Where(s => s.Court.Status == CourtStatus.Approved && s.Court.Isactive)
+                .AsQueryable();
+
+            // Apply filters
+            if (filterParams.CourtId.HasValue)
+            {
+                query = query.Where(s => s.CourtId == filterParams.CourtId.Value);
+            }
+
+            if (filterParams.IsAvailable.HasValue)
+            {
+                query = query.Where(s => s.Isavailable == filterParams.IsAvailable.Value);
+            }
+            else if (!isAuthenticated || (!isAdminOrStaff && !query.Any(s => s.Court.OwnerId == accountId)))
+            {
+                query = query.Where(s => s.Isavailable);
+            }
+
+            if (filterParams.StartDateTime.HasValue)
+            {
+                query = query.Where(s => s.Starttime >= filterParams.StartDateTime.Value);
+            }
+
+            if (filterParams.EndDateTime.HasValue)
+            {
+                query = query.Where(s => s.Starttime <= filterParams.EndDateTime.Value);
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.Search))
+            {
+                var searchLower = filterParams.Search.ToLower();
+                query = query.Where(s => (s.Court.Location != null && s.Court.Location.ToLower().Contains(searchLower)) ||
+                                         (s.Court.Owner != null && s.Court.Owner.Fullname != null && s.Court.Owner.Fullname.ToLower().Contains(searchLower)));
+            }
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply sorting
+            var sortBy = filterParams.SortBy?.ToLower() ?? "starttime";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "endtime" => isDescending ? query.OrderByDescending(s => s.Endtime) : query.OrderBy(s => s.Endtime),
+                "slotnumber" => isDescending ? query.OrderByDescending(s => s.Slotnumber) : query.OrderBy(s => s.Slotnumber),
+                "courtlocation" => isDescending ? query.OrderByDescending(s => s.Court.Location) : query.OrderBy(s => s.Court.Location),
+                "ownername" => isDescending ? query.OrderByDescending(s => s.Court.Owner.Fullname) : query.OrderBy(s => s.Court.Owner.Fullname),
+                _ => isDescending ? query.OrderByDescending(s => s.Starttime) : query.OrderBy(s => s.Starttime)
+            };
+
+            // Apply pagination
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
+
+            var slots = await query.ToListAsync();
+
+            var responseData = slots.Select(slot => new CourtSlotResponseDto
+            {
+                SlotId = slot.SlotId,
+                CourtId = slot.CourtId,
+                CourtName = slot.Court.Owner.Fullname ?? "Unknown",
+                CourtLocation = slot.Court.Location ?? "Unknown",
+                CourtImageUrls = slot.Court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                CourtPricePerHour = slot.Court.Priceperhour,
+                OwnerId = slot.Court.OwnerId,
+                OwnerName = slot.Court.Owner?.Fullname ?? "Unknown",
+                SlotNumber = slot.Slotnumber,
+                StartTime = slot.Starttime,
+                EndTime = slot.Endtime,
+                IsAvailable = slot.Isavailable
+            }).ToList();
+
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "Court slots retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
 
         [HttpGet("{id}")]
@@ -162,12 +358,17 @@ namespace GetSportAPI.Controllers
             {
                 SlotId = slot.SlotId,
                 CourtId = slot.CourtId,
-                Slotnumber = slot.Slotnumber,
-                Starttime = slot.Starttime,
-                Endtime = slot.Endtime,
-                Isavailable = slot.Isavailable,
+                CourtName = court.Owner.Fullname ?? "Unknown",
                 CourtLocation = court.Location ?? "Unknown",
-                OwnerId = court.OwnerId            };
+                CourtImageUrls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                CourtPricePerHour = court.Priceperhour,
+                OwnerId = court.OwnerId,
+                OwnerName = court.Owner?.Fullname ?? "Unknown",
+                SlotNumber = slot.Slotnumber,
+                StartTime = slot.Starttime,
+                EndTime = slot.Endtime,
+                IsAvailable = slot.Isavailable
+            };
 
             return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slot retrieved successfully.", Data = responseData });
         }
@@ -228,7 +429,7 @@ namespace GetSportAPI.Controllers
                 var currentTime = openDateTime;
                 while (currentTime < closeDateTime)
                 {
-                    var slotEndTime = currentTime.AddMinutes(60); 
+                    var slotEndTime = currentTime.AddMinutes(60);
                     if (slotEndTime > closeDateTime) break;
 
                     var newSlot = new Courtslot
@@ -252,11 +453,7 @@ namespace GetSportAPI.Controllers
             }
 
             var query = slots.AsQueryable();
-            if (!isAuthenticated)
-            {
-                query = query.Where(s => s.Isavailable);
-            }
-            else if (!isAdminOrStaff && !isOwner)
+            if (!isAuthenticated || (!isAdminOrStaff && !isOwner))
             {
                 query = query.Where(s => s.Isavailable);
             }
@@ -265,12 +462,17 @@ namespace GetSportAPI.Controllers
             {
                 SlotId = slot.SlotId,
                 CourtId = slot.CourtId,
-                Slotnumber = slot.Slotnumber,
-                Starttime = slot.Starttime,
-                Endtime = slot.Endtime,
-                Isavailable = slot.Isavailable,
+                CourtName = court.Owner.Fullname ?? "Unknown",
                 CourtLocation = court.Location ?? "Unknown",
-                OwnerId = court.OwnerId            }).ToList();
+                CourtImageUrls = court.Imageurl.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                CourtPricePerHour = court.Priceperhour,
+                OwnerId = court.OwnerId,
+                OwnerName = court.Owner.Fullname ?? "Unknown",
+                SlotNumber = slot.Slotnumber,
+                StartTime = slot.Starttime,
+                EndTime = slot.Endtime,
+                IsAvailable = slot.Isavailable
+            }).ToList();
 
             return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slots retrieved successfully.", Data = responseData });
         }
@@ -307,8 +509,7 @@ namespace GetSportAPI.Controllers
                 return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "User not authenticated." });
             }
 
-            int accountId;
-            if (!int.TryParse(userIdClaim, out accountId))
+            if (!int.TryParse(userIdClaim, out int accountId))
             {
                 return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "Invalid user ID." });
             }
@@ -349,7 +550,6 @@ namespace GetSportAPI.Controllers
                 var slotDate = currentTime.Date;
                 var slotTime = currentTime.TimeOfDay;
 
-                // Skip if slot is outside daily operating hours
                 if (slotTime < openTime || slotTime >= closeTime)
                 {
                     currentTime = slotDate.AddDays(1).Add(openTime);
@@ -382,12 +582,16 @@ namespace GetSportAPI.Controllers
                 {
                     SlotId = slot.SlotId,
                     CourtId = slot.CourtId,
-                    Slotnumber = slot.Slotnumber,
-                    Starttime = slot.Starttime,
-                    Endtime = slot.Endtime,
-                    Isavailable = slot.Isavailable,
+                    CourtName = court.Owner.Fullname ?? "Unknown",
                     CourtLocation = court.Location ?? "Unknown",
-                    OwnerId = court.OwnerId
+                    CourtImageUrls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                    CourtPricePerHour = court.Priceperhour,
+                    OwnerId = court.OwnerId,
+                    OwnerName = court.Owner?.Fullname ?? "Unknown",
+                    SlotNumber = slot.Slotnumber,
+                    StartTime = slot.Starttime,
+                    EndTime = slot.Endtime,
+                    IsAvailable = slot.Isavailable
                 }).ToList();
 
                 return Ok(new { StatusCode = 200, Status = "Success", Message = $"Created {newSlots.Count} court slots successfully.", Data = responseData });
@@ -432,14 +636,12 @@ namespace GetSportAPI.Controllers
             var isOwner = accountId.HasValue && court.OwnerId == accountId.Value;
 
             var query = _context.Courtslots
+                .Include(s => s.Court)
+                .ThenInclude(c => c.Owner)
                 .Where(s => s.CourtId == courtId)
                 .AsQueryable();
 
-            if (!isAuthenticated)
-            {
-                query = query.Where(s => s.Isavailable);
-            }
-            else if (!isAdminOrStaff && !isOwner)
+            if (!isAuthenticated || (!isAdminOrStaff && !isOwner))
             {
                 query = query.Where(s => s.Isavailable);
             }
@@ -450,16 +652,111 @@ namespace GetSportAPI.Controllers
             {
                 SlotId = slot.SlotId,
                 CourtId = slot.CourtId,
-                Slotnumber = slot.Slotnumber,
-                Starttime = slot.Starttime,
-                Endtime = slot.Endtime,
-                Isavailable = slot.Isavailable,
+                CourtName = court.Owner.Fullname ?? "Unknown",
                 CourtLocation = court.Location ?? "Unknown",
-                OwnerId = court.OwnerId
+                CourtImageUrls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                CourtPricePerHour = court.Priceperhour,
+                OwnerId = court.OwnerId,
+                OwnerName = court.Owner?.Fullname ?? "Unknown",
+                SlotNumber = slot.Slotnumber,
+                StartTime = slot.Starttime,
+                EndTime = slot.Endtime,
+                IsAvailable = slot.Isavailable
             }).ToList();
 
             return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slots retrieved successfully.", Data = responseData });
         }
+
+        [HttpPut("availability/{id}")]
+        [Authorize(Roles = $"{UserRole.Admin},{UserRole.Staff}")]
+        public async Task<ActionResult> UpdateAvailability(int id, [FromQuery] bool available)
+        {
+            if (id <= 0)
+            {
+                return BadRequest(new
+                {
+                    StatusCode = 400,
+                    Status = "BadRequest",
+                    Message = "Invalid slot ID."
+                });
+            }
+
+            var slot = await _context.Courtslots
+                .Include(s => s.Court)
+                .ThenInclude(c => c.Owner)
+                .FirstOrDefaultAsync(s => s.SlotId == id);
+
+            if (slot == null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = 404,
+                    Status = "NotFound",
+                    Message = "Court slot not found."
+                });
+            }
+
+            var court = slot.Court;
+            if (court.Status == CourtStatus.Deleted || !court.Isactive || court.Status != CourtStatus.Approved)
+            {
+                return BadRequest(new
+                {
+                    StatusCode = 400,
+                    Status = "BadRequest",
+                    Message = "Court is deleted, inactive, or not approved."
+                });
+            }
+
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int? accountId = null;
+            if (userIdClaim != null && int.TryParse(userIdClaim, out int parsedId))
+            {
+                accountId = parsedId;
+            }
+
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var isAdmin = userRole == UserRole.Admin;
+            var isStaff = userRole == UserRole.Staff;
+            var isOwner = accountId.HasValue && court.OwnerId == accountId.Value;
+
+            if (!isAdmin && !isStaff && !isOwner)
+            {
+                return StatusCode(403, new
+                {
+                    StatusCode = 403,
+                    Status = "Forbidden",
+                    Message = "You are not authorized to update this slot."
+                });
+            }
+
+            try
+            {
+                slot.Isavailable = available;
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    StatusCode = 200,
+                    Status = "Success",
+                    Message = $"Court slot availability updated to {(available ? "available" : "unavailable")}.",
+                    Data = new
+                    {
+                        SlotId = slot.SlotId,
+                        IsAvailable = slot.Isavailable
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    StatusCode = 500,
+                    Status = "InternalServerError",
+                    Message = $"An error occurred while updating slot availability: {ex.Message}"
+                });
+            }
+        }
+
 
         [HttpPut("{id}")]
         [Authorize(Roles = $"{UserRole.Admin},{UserRole.Staff}")]
@@ -525,7 +822,6 @@ namespace GetSportAPI.Controllers
                 return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid slot duration. Allowed durations are 30, 45, 60, 90, 120 minutes." });
             }
 
-            // Check if updated slot time is within court's daily operating hours
             var (openTime, closeTime) = GetCourtOperatingHours(court);
             if (newStarttime.TimeOfDay < openTime || newEndtime.TimeOfDay > closeTime)
             {
@@ -561,12 +857,16 @@ namespace GetSportAPI.Controllers
                 {
                     SlotId = slot.SlotId,
                     CourtId = slot.CourtId,
-                    Slotnumber = slot.Slotnumber,
-                    Starttime = slot.Starttime,
-                    Endtime = slot.Endtime,
-                    Isavailable = slot.Isavailable,
+                    CourtName = court.Owner.Fullname ?? "Unknown",
                     CourtLocation = court.Location ?? "Unknown",
-                    OwnerId = court.OwnerId
+                    CourtImageUrls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
+                    CourtPricePerHour = court.Priceperhour,
+                    OwnerId = court.OwnerId,
+                    OwnerName = court.Owner?.Fullname ?? "Unknown",
+                    SlotNumber = slot.Slotnumber,
+                    StartTime = slot.Starttime,
+                    EndTime = slot.Endtime,
+                    IsAvailable = slot.Isavailable
                 };
 
                 return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slot updated successfully.", Data = responseData });
@@ -629,78 +929,6 @@ namespace GetSportAPI.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = $"An error occurred while deleting the court slot: {ex.Message}" });
-            }
-        }
-
-        [HttpPut("availability/{id}")]
-        [Authorize]
-        public async Task<ActionResult> UpdateAvailability(int id, [FromBody] bool isAvailable)
-        {
-            if (id <= 0)
-            {
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid slot ID." });
-            }
-
-            var slot = await _context.Courtslots
-                .Include(s => s.Court)
-                .ThenInclude(c => c.Owner)
-                .FirstOrDefaultAsync(s => s.SlotId == id);
-
-            if (slot == null)
-            {
-                return NotFound(new { StatusCode = 404, Status = "NotFound", Message = "Court slot not found." });
-            }
-
-            var court = slot.Court;
-            if (court.Status == CourtStatus.Deleted || !court.Isactive || court.Status != CourtStatus.Approved)
-            {
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Court is deleted, inactive, or not approved." });
-            }
-
-            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "User not authenticated." });
-            }
-
-            int accountId;
-            if (!int.TryParse(userIdClaim, out accountId))
-            {
-                return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "Invalid user ID." });
-            }
-
-            var userRole = User.FindFirstValue(ClaimTypes.Role);
-            var isAdmin = userRole == UserRole.Admin;
-            var isStaff = userRole == UserRole.Staff;
-            var isOwner = court.OwnerId == accountId;
-
-            if (!isAdmin && !isStaff && !isOwner)
-            {
-                return StatusCode(403, new { StatusCode = 403, Status = "Forbidden", Message = "You are not authorized to update this slot's availability." });
-            }
-
-            try
-            {
-                slot.Isavailable = isAvailable;
-                await _context.SaveChangesAsync();
-
-                var responseData = new CourtSlotResponseDto
-                {
-                    SlotId = slot.SlotId,
-                    CourtId = slot.CourtId,
-                    Slotnumber = slot.Slotnumber,
-                    Starttime = slot.Starttime,
-                    Endtime = slot.Endtime,
-                    Isavailable = slot.Isavailable,
-                    CourtLocation = court.Location ?? "Unknown",
-                    OwnerId = court.OwnerId
-                };
-
-                return Ok(new { StatusCode = 200, Status = "Success", Message = "Court slot availability updated successfully.", Data = responseData });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = $"An error occurred while updating the court slot availability: {ex.Message}" });
             }
         }
     }

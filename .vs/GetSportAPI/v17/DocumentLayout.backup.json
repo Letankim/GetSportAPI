@@ -3,24 +3,196 @@
   "WorkspaceRootPath": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\models\\generated\\getsportcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\models\\generated\\getsportcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\courtbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\courtbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\healthservercheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\healthservercheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\courtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\courtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\helpers\\userhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\helpers\\userhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\userinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\userinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\models\\enum\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\models\\enum\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\playmatepostcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\playmatepostcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\playmatejoincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\playmatejoincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\utils\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\utils\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\playmatejoinresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\playmatejoinresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\playmatejoinfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\playmatejoinfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\playmatejoincreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\playmatejoincreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\playmatepostcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\playmatepostcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\playmatepostresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\playmatepostresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\playmatepostupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\playmatepostupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\playmatepostfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\playmatepostfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\ownerpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\ownerpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\feedbackresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\feedbackresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\feedbackcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\feedbackcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\userpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\userpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\feedbackfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\feedbackfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\feedbackupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\feedbackupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\courtslotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\courtslotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\models\\generated\\getsportcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\models\\generated\\getsportcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\courtslotfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\courtslotfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\models\\generated\\court.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\models\\generated\\court.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\courtbookingfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\courtbookingfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\packageresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\packageresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\packagecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\packagecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\packagefilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\packagefilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\courtfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\courtfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\params\\blogfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\params\\blogfilterparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\blogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\blogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\blogcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\blogcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\courtresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\courtresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\courtcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\courtcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\courtupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\courtupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\dto\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\dto\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\controllers\\imagehelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\controllers\\imagehelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|d:\\fpt\\sp_fa_25\\exe\\api_court\\getsportapi\\getsportapi\\getsportapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3E8B4C63-1D89-45A6-86E9-836CC9F49067}|GetSportAPI\\GetSportAPI.csproj|solutionrelative:getsportapi\\getsportapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\VerifyAccountDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GetSportAPI\\DTO\\VerifyAccountDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +202,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,28 +210,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetSportContext.cs",
-              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\GetSportContext.cs",
-              "RelativeDocumentMoniker": "GetSportAPI\\Models\\Generated\\GetSportContext.cs",
-              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\GetSportContext.cs",
-              "RelativeToolTip": "GetSportAPI\\Models\\Generated\\GetSportContext.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAD4vzUAAACnAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "UserHelper.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Helpers\\UserHelper.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Helpers\\UserHelper.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Helpers\\UserHelper.cs",
+              "RelativeToolTip": "GetSportAPI\\Helpers\\UserHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T14:22:39.864Z",
+              "WhenOpened": "2025-10-13T15:35:33.718Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "GetSportAPI\\appsettings.json",
-              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
-              "RelativeToolTip": "GetSportAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-07T13:40:07.748Z",
+              "DocumentIndex": 2,
+              "Title": "CourtBookingController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtBookingController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\CourtBookingController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtBookingController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\CourtBookingController.cs",
+              "ViewState": "AgIAAIwCAAAAAAAAAAAgwJcCAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:29:20.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CourtController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\CourtController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\CourtController.cs",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAgwAABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T18:47:32.916Z",
               "EditorCaption": ""
             },
             {
@@ -70,33 +255,543 @@
               "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
               "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\HealthServerCheckController.cs",
               "RelativeToolTip": "GetSportAPI\\Controllers\\HealthServerCheckController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:24:54.038Z"
+              "WhenOpened": "2025-09-07T13:24:54.038Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "FeedbackController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\FeedbackController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\FeedbackController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\FeedbackController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\FeedbackController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAgwHAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T08:23:33.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "GetSportAPI\\appsettings.json",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\appsettings.json",
+              "RelativeToolTip": "GetSportAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-07T13:40:07.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserInfoDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\UserInfoDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\UserInfoDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\UserInfoDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\UserInfoDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T15:34:21.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Common.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Enum\\Common.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Models\\Enum\\Common.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Enum\\Common.cs",
+              "RelativeToolTip": "GetSportAPI\\Models\\Enum\\Common.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T06:30:33.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "GetSportAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAAAwOYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAANcAAAAAAAAAAAAhwLQAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:23:29.903Z"
+              "WhenOpened": "2025-09-07T13:23:29.903Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 47,
+              "Title": "VerifyAccountDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\VerifyAccountDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\VerifyAccountDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\VerifyAccountDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\VerifyAccountDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T10:07:33.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PlaymatePostController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PlaymatePostController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\PlaymatePostController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PlaymatePostController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\PlaymatePostController.cs",
+              "ViewState": "AgIAANcCAAAAAAAAAAAQwOUCAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:38:23.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlaymateJoinController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PlaymateJoinController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\PlaymateJoinController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PlaymateJoinController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\PlaymateJoinController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAawLkCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:38:13.991Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:28:29.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Utils\\EmailService.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Utils\\EmailService.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Utils\\EmailService.cs",
+              "RelativeToolTip": "GetSportAPI\\Utils\\EmailService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T11:53:13.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PlaymatePostCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PlaymatePostCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PlaymatePostCreateDto.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:38:44.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlaymateJoinCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymateJoinCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PlaymateJoinCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymateJoinCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PlaymateJoinCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T10:08:48.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PlaymateJoinResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymateJoinResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PlaymateJoinResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymateJoinResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PlaymateJoinResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T10:08:52.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PlaymateJoinFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PlaymateJoinFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\PlaymateJoinFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PlaymateJoinFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\PlaymateJoinFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T10:13:08.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PlaymatePostResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PlaymatePostResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PlaymatePostResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:38:49.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PlaymatePostUpdateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostUpdateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PlaymatePostUpdateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PlaymatePostUpdateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PlaymatePostUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:44:19.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PlaymatePostFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PlaymatePostFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\PlaymatePostFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PlaymatePostFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\PlaymatePostFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:45:11.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UserPackageController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\UserPackageController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\UserPackageController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\UserPackageController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\UserPackageController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowEAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:37:18.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "OwnerPackageController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\OwnerPackageController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\OwnerPackageController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\OwnerPackageController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\OwnerPackageController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:36:28.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "FeedbackUpdateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackUpdateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\FeedbackUpdateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackUpdateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\FeedbackUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:27:24.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FeedbackFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\FeedbackFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\FeedbackFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\FeedbackFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\FeedbackFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T09:08:01.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FeedbackResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\FeedbackResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\FeedbackResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T08:23:56.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "FeedbackCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\FeedbackCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\FeedbackCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\FeedbackCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T08:23:49.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CourtSlotFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtSlotFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\CourtSlotFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtSlotFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\CourtSlotFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T08:08:13.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PackageResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PackageResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PackageResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PackageResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PackageResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T07:14:49.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "PackageCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PackageCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\PackageCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\PackageCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\PackageCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T07:09:27.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "PackageFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PackageFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\PackageFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\PackageFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\PackageFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T07:09:52.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "PackageController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PackageController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\PackageController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\PackageController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\PackageController.cs",
+              "ViewState": "AgIAADABAAAAAAAAAADwvzQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T07:08:35.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Court.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\Court.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Models\\Generated\\Court.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\Court.cs",
+              "RelativeToolTip": "GetSportAPI\\Models\\Generated\\Court.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T19:01:33.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "GetSportContext.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\GetSportContext.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Models\\Generated\\GetSportContext.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Models\\Generated\\GetSportContext.cs",
+              "RelativeToolTip": "GetSportAPI\\Models\\Generated\\GetSportContext.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwDUAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:22:39.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CourtSlotController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtSlotController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\CourtSlotController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\CourtSlotController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\CourtSlotController.cs",
+              "ViewState": "AgIAAJUCAAAAAAAAAAAmwJ8CAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T08:01:37.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CourtBookingFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtBookingFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\CourtBookingFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtBookingFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\CourtBookingFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T07:52:29.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "BlogResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\BlogResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\BlogResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\BlogResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\BlogResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T19:30:06.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "BlogFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\BlogFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\BlogFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\BlogFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\BlogFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T19:29:03.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "CourtResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\CourtResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\CourtResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T19:02:05.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "BlogCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\BlogCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\BlogCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\BlogCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\BlogCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T19:29:58.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "CourtCreateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtCreateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\CourtCreateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtCreateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\CourtCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T18:56:04.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "CourtFilterParams.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtFilterParams.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Params\\CourtFilterParams.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Params\\CourtFilterParams.cs",
+              "RelativeToolTip": "GetSportAPI\\Params\\CourtFilterParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T18:57:15.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\BlogController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\BlogController.cs",
+              "ViewState": "AgIAANwAAAAAAAAAAAAawPIAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T11:40:30.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "CourtUpdateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtUpdateDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\CourtUpdateDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\CourtUpdateDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\CourtUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T18:56:41.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\DTO\\AuthResponseDto.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\DTO\\AuthResponseDto.cs",
+              "RelativeToolTip": "GetSportAPI\\DTO\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T11:51:57.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "GetSportAPI.csproj",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\GetSportAPI.csproj",
+              "RelativeDocumentMoniker": "GetSportAPI\\GetSportAPI.csproj",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\GetSportAPI.csproj",
+              "RelativeToolTip": "GetSportAPI\\GetSportAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-21T20:28:23.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Program.cs",
               "RelativeDocumentMoniker": "GetSportAPI\\Program.cs",
               "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Program.cs",
               "RelativeToolTip": "GetSportAPI\\Program.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T13:13:45.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ImageHelperController.cs",
+              "DocumentMoniker": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\ImageHelperController.cs",
+              "RelativeDocumentMoniker": "GetSportAPI\\Controllers\\ImageHelperController.cs",
+              "ToolTip": "D:\\FPT\\SP_FA_25\\EXE\\API_COURT\\GetSportAPI\\GetSportAPI\\Controllers\\ImageHelperController.cs",
+              "RelativeToolTip": "GetSportAPI\\Controllers\\ImageHelperController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T18:47:38.68Z"
             }
           ]
         }

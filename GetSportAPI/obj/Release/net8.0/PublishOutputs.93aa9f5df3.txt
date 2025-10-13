@@ -1,12 +1,6 @@
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\GetSportAPI.exe
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\web.config
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\appsettings.Development.json
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\appsettings.json
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\appsettings.Development.json
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\appsettings.json
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\GetSportAPI.deps.json
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\GetSportAPI.runtimeconfig.json
-D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\publish\GetSportAPI.staticwebassets.endpoints.json
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\GetSportAPI.dll
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\GetSportAPI.runtimeconfig.json
 D:\FPT\SP_FA_25\EXE\API_COURT\GetSportAPI\GetSportAPI\publish\GetSportAPI.pdb

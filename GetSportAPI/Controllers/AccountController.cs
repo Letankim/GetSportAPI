@@ -63,7 +63,6 @@ namespace GetSportAPI.Controllers
                 _context.Accounts.Add(account);
                 await _context.SaveChangesAsync();
 
-                // Create a wallet for the new account
                 var wallet = new Wallet
                 {
                     UserId = account.UserId,
@@ -286,7 +285,6 @@ namespace GetSportAPI.Controllers
 
             try
             {
-                // Fields updatable by owner or admin/staff
                 if (!string.IsNullOrEmpty(dto.Fullname)) account.Fullname = dto.Fullname.Trim();
                 if (!string.IsNullOrEmpty(dto.Gender)) account.Gender = dto.Gender.Trim();
                 if (!string.IsNullOrEmpty(dto.Phonenumber)) account.Phonenumber = dto.Phonenumber.Trim();
@@ -295,7 +293,6 @@ namespace GetSportAPI.Controllers
                 if (!string.IsNullOrEmpty(dto.Skilllevel)) account.Skilllevel = dto.Skilllevel.Trim();
                 if (!string.IsNullOrEmpty(dto.Membershiptype)) account.Membershiptype = dto.Membershiptype.Trim();
 
-                // Fields only updatable by admin/staff
                 if (isAdminOrStaff)
                 {
                     if (!string.IsNullOrEmpty(dto.Role)) account.Role = dto.Role.Trim();

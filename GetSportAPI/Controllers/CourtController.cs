@@ -11,6 +11,8 @@ using GetSportAPI.Models.Enum;
 using GetSportAPI.DTO;
 using GetSportAPI.Utils;
 using System.ComponentModel.DataAnnotations;
+using GetSportAPI.Params;
+using GetSportAPI.Helpers;
 
 namespace GetSportAPI.Controllers
 {
@@ -21,6 +23,7 @@ namespace GetSportAPI.Controllers
         private readonly GetSportContext _context;
         private readonly IWebHostEnvironment _environment;
         private readonly string[] _validStatuses = { CourtStatus.Pending, CourtStatus.Approved, CourtStatus.Rejected, CourtStatus.Deleted };
+        private readonly string[] _validSortFields = { "Priority", "Priceperhour", "Location", "Startdate", "Enddate" };
 
         public CourtController(GetSportContext context, IWebHostEnvironment environment)
         {
@@ -34,38 +37,62 @@ namespace GetSportAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = new Dictionary<string, string[]>();
-                foreach (var state in ModelState)
+                var errors = ModelState
+                    .Where(e => e.Value.Errors.Any())
+                    .ToDictionary(e => e.Key, e => e.Value.Errors.Select(x => x.ErrorMessage).ToArray());
+
+                return BadRequest(new
                 {
-                    if (state.Value.Errors.Any())
-                    {
-                        errors[state.Key] = state.Value.Errors.Select(e => e.ErrorMessage).ToArray();
-                    }
-                }
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid input data.", Errors = errors });
+                    StatusCode = 400,
+                    Status = "BadRequest",
+                    Message = "Invalid input data.",
+                    Errors = errors
+                });
             }
 
-            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null || !int.TryParse(userIdClaim, out int ownerId))
+            var userInfo = UserHelper.GetUserInfo(User);
+            if (userInfo.UserId == 0)
             {
-                return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "User not authenticated." });
+                return Unauthorized(new
+                {
+                    StatusCode = 401,
+                    Status = "Unauthorized",
+                    Message = "User not authenticated."
+                });
             }
+
+            int ownerId = userInfo.UserId;
 
             if (dto.Startdate.HasValue && dto.Enddate.HasValue && dto.Startdate > dto.Enddate)
             {
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Start date cannot be after end date." });
+                return BadRequest(new
+                {
+                    StatusCode = 400,
+                    Status = "BadRequest",
+                    Message = "Start date cannot be after end date."
+                });
             }
 
             try
             {
                 ImageService imageService = new ImageService(_environment);
-                string? imageUrl = await imageService.SaveImageAsync(dto.Image);
+                var imageUrls = new List<string>();
+
+                if (dto.Images != null && dto.Images.Any())
+                {
+                    foreach (var image in dto.Images)
+                    {
+                        string? imageUrl = await imageService.SaveImageAsync(image);
+                        if (imageUrl != null)
+                            imageUrls.Add(imageUrl);
+                    }
+                }
 
                 var court = new Court
                 {
                     OwnerId = ownerId,
                     Location = dto.Location?.Trim(),
-                    Imageurl = imageUrl,
+                    Imageurl = string.Join(",", imageUrls),
                     Priceperhour = dto.Priceperhour,
                     Status = CourtStatus.Pending,
                     Isactive = true,
@@ -93,7 +120,7 @@ namespace GetSportAPI.Controllers
                     OwnerId = court.OwnerId,
                     OwnerName = owner?.Fullname ?? "Unknown",
                     Location = court.Location,
-                    Imageurl = court.Imageurl,
+                    Imageurls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
                     Priceperhour = court.Priceperhour,
                     Status = court.Status,
                     Isactive = court.Isactive,
@@ -102,17 +129,35 @@ namespace GetSportAPI.Controllers
                     Enddate = court.Enddate
                 };
 
-                return Ok(new { StatusCode = 200, Status = "Success", Message = "Court created successfully.", Data = responseData });
+                return Ok(new
+                {
+                    StatusCode = 200,
+                    Status = "Success",
+                    Message = "Court created successfully.",
+                    Data = responseData
+                });
             }
             catch (ValidationException ex)
             {
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = ex.Message });
+                return BadRequest(new
+                {
+                    StatusCode = 400,
+                    Status = "BadRequest",
+                    Message = ex.Message
+                });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500, new { StatusCode = 500, Status = "InternalServerError", Message = "An error occurred while creating the court." });
+                return StatusCode(500, new
+                {
+                    StatusCode = 500,
+                    Status = "InternalServerError",
+                    Message = "An error occurred while creating the court.",
+                    Detail = ex.Message
+                });
             }
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
@@ -162,7 +207,7 @@ namespace GetSportAPI.Controllers
                 OwnerId = court.OwnerId,
                 OwnerName = court.Owner?.Fullname ?? "Unknown",
                 Location = court.Location,
-                Imageurl = court.Imageurl,
+                Imageurls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
                 Priceperhour = court.Priceperhour,
                 Status = court.Status,
                 Isactive = court.Isactive,
@@ -175,27 +220,39 @@ namespace GetSportAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll([FromQuery] string? status = null)
+        public async Task<ActionResult> GetAll([FromQuery] CourtFilterParams filterParams)
         {
-            if (!string.IsNullOrEmpty(status) && !_validStatuses.Contains(status))
+            // ===== Validate các tham số =====
+            if (!string.IsNullOrEmpty(filterParams.Status) && !_validStatuses.Contains(filterParams.Status))
             {
                 return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Pending, Approved, Rejected." });
             }
 
-            bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
-            int? accountId = null;
-            string? userRole = null;
-            if (isAuthenticated)
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
             {
-                var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (userIdClaim != null && int.TryParse(userIdClaim, out int parsedId))
-                {
-                    accountId = parsedId;
-                }
-                userRole = User.FindFirstValue(ClaimTypes.Role);
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
             }
 
-            var isAdminOrStaff = userRole == UserRole.Admin || userRole == UserRole.Staff;
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
+            }
+
+            // ===== Lấy thông tin user từ claim =====
+            var userInfo = UserHelper.GetUserInfo(User);
+            bool isAuthenticated = userInfo.UserId > 0;
+            bool isAdmin = userInfo.Role == UserRole.Admin;
+            bool isStaff = userInfo.Role == UserRole.Staff;
 
             var query = _context.Courts
                 .Include(c => c.Owner)
@@ -206,24 +263,77 @@ namespace GetSportAPI.Controllers
             {
                 query = query.Where(c => c.Status == CourtStatus.Approved && c.Isactive);
             }
+            else if (isAdmin)
+            {
+            }
+            else if (isStaff)
+            {
+                query = query.Where(c => c.OwnerId == userInfo.UserId);
+            }
             else
             {
-                if (!isAdminOrStaff && accountId.HasValue)
-                {
-                    query = query.Where(c => c.Status == CourtStatus.Approved || c.Status == CourtStatus.Rejected || (c.Status == CourtStatus.Pending && c.OwnerId == accountId));
-                }
-
-                if (!string.IsNullOrEmpty(status))
-                {
-                    query = query.Where(c => c.Status == status);
-                }
+                query = query.Where(c =>
+                    c.Status == CourtStatus.Approved ||
+                    (c.OwnerId == userInfo.UserId && c.Status == CourtStatus.Pending));
             }
+
+            if (!string.IsNullOrEmpty(filterParams.Status))
+            {
+                query = query.Where(c => c.Status == filterParams.Status);
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.Search))
+            {
+                query = query.Where(c => c.Location != null && c.Location.ToLower().Contains(filterParams.Search.ToLower()));
+            }
+
+            if (filterParams.MinPrice.HasValue)
+            {
+                query = query.Where(c => c.Priceperhour >= filterParams.MinPrice.Value);
+            }
+
+            if (filterParams.MaxPrice.HasValue)
+            {
+                query = query.Where(c => c.Priceperhour <= filterParams.MaxPrice.Value);
+            }
+
+            if (filterParams.StartDate.HasValue)
+            {
+                var startDateTime = filterParams.StartDate.Value.ToDateTime(TimeOnly.MinValue);
+                query = query.Where(c => c.Startdate.HasValue && c.Startdate.Value >= startDateTime);
+            }
+
+            if (filterParams.EndDate.HasValue)
+            {
+                var endDateTime = filterParams.EndDate.Value.ToDateTime(TimeOnly.MaxValue);
+                query = query.Where(c => c.Enddate.HasValue && c.Enddate.Value <= endDateTime);
+            }
+
+            var totalCount = await query.CountAsync();
+            var sortBy = filterParams.SortBy?.ToLower() ?? "priority";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "priceperhour" => isDescending ? query.OrderByDescending(c => c.Priceperhour) : query.OrderBy(c => c.Priceperhour),
+                "location" => isDescending ? query.OrderByDescending(c => c.Location) : query.OrderBy(c => c.Location),
+                "startdate" => isDescending ? query.OrderByDescending(c => c.Startdate) : query.OrderBy(c => c.Startdate),
+                "enddate" => isDescending ? query.OrderByDescending(c => c.Enddate) : query.OrderBy(c => c.Enddate),
+                _ => isDescending ? query.OrderByDescending(c => c.Priority) : query.OrderBy(c => c.Priority)
+            };
+
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
 
             var courts = await query.ToListAsync();
 
             var ownerIds = courts.Select(c => c.OwnerId).Distinct().ToList();
             var activeOwnerPackages = await _context.Ownerpackages
-                .Where(op => ownerIds.Contains(op.OwnerId) && op.Status == "Active" && op.Startdate <= DateOnly.FromDateTime(DateTime.UtcNow) && op.Enddate >= DateOnly.FromDateTime(DateTime.UtcNow))
+                .Where(op => ownerIds.Contains(op.OwnerId)
+                             && op.Status == "Active"
+                             && op.Startdate <= DateOnly.FromDateTime(DateTime.UtcNow)
+                             && op.Enddate >= DateOnly.FromDateTime(DateTime.UtcNow))
                 .GroupBy(op => op.OwnerId)
                 .Select(g => g.OrderBy(op => op.Priority).FirstOrDefault())
                 .ToDictionaryAsync(op => op.OwnerId, op => op.Priority);
@@ -242,7 +352,7 @@ namespace GetSportAPI.Controllers
                     OwnerId = court.OwnerId,
                     OwnerName = court.Owner?.Fullname ?? "Unknown",
                     Location = court.Location,
-                    Imageurl = court.Imageurl,
+                    Imageurls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
                     Priceperhour = court.Priceperhour,
                     Status = court.Status,
                     Isactive = court.Isactive,
@@ -250,29 +360,127 @@ namespace GetSportAPI.Controllers
                     Startdate = court.Startdate,
                     Enddate = court.Enddate
                 };
-            })
-            .OrderBy(c => c.Priority) 
-            .ToList();
+            }).ToList();
 
-            return Ok(new { StatusCode = 200, Status = "Success", Message = "Courts retrieved successfully.", Data = responseData });
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "Courts retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
+
 
         [HttpGet("my")]
         [Authorize(Roles = UserRole.Customer)]
-        public async Task<ActionResult> GetMyCourts()
+        public async Task<ActionResult> GetMyCourts([FromQuery] CourtFilterParams filterParams)
         {
+            if (!string.IsNullOrEmpty(filterParams.Status) && !_validStatuses.Contains(filterParams.Status))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Pending, Approved, Rejected." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
+            }
+
             var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userIdClaim == null || !int.TryParse(userIdClaim, out int ownerId))
             {
                 return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "User not authenticated." });
             }
 
-            var courts = await _context.Courts
+            var query = _context.Courts
                 .Include(c => c.Owner)
                 .Where(c => c.OwnerId == ownerId && c.Status != CourtStatus.Deleted)
-                .ToListAsync();
+                .AsQueryable();
 
-            // Fetch active Ownerpackage for the owner
+            // Apply filters
+            if (!string.IsNullOrEmpty(filterParams.Status))
+            {
+                query = query.Where(c => c.Status == filterParams.Status);
+            }
+
+            // Search by location
+            if (!string.IsNullOrEmpty(filterParams.Search))
+            {
+                query = query.Where(c => c.Location != null && c.Location.ToLower().Contains(filterParams.Search.ToLower()));
+            }
+
+            // Filter by price range
+            if (filterParams.MinPrice.HasValue)
+            {
+                query = query.Where(c => c.Priceperhour >= filterParams.MinPrice.Value);
+            }
+
+            if (filterParams.MaxPrice.HasValue)
+            {
+                query = query.Where(c => c.Priceperhour <= filterParams.MaxPrice.Value);
+            }
+
+            // Filter by date range
+            if (filterParams.StartDate.HasValue)
+            {
+                var startDateTime = filterParams.StartDate.Value.ToDateTime(TimeOnly.MinValue);
+                query = query.Where(c => c.Startdate.HasValue && c.Startdate.Value >= startDateTime);
+            }
+
+            if (filterParams.EndDate.HasValue)
+            {
+                var endDateTime = filterParams.EndDate.Value.ToDateTime(TimeOnly.MaxValue);
+                query = query.Where(c => c.Enddate.HasValue && c.Enddate.Value <= endDateTime);
+            }
+
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply sorting
+            var sortBy = filterParams.SortBy?.ToLower() ?? "priority";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "priceperhour" => isDescending ? query.OrderByDescending(c => c.Priceperhour) : query.OrderBy(c => c.Priceperhour),
+                "location" => isDescending ? query.OrderByDescending(c => c.Location) : query.OrderBy(c => c.Location),
+                "startdate" => isDescending ? query.OrderByDescending(c => c.Startdate) : query.OrderBy(c => c.Startdate),
+                "enddate" => isDescending ? query.OrderByDescending(c => c.Enddate) : query.OrderBy(c => c.Enddate),
+                _ => isDescending ? query.OrderByDescending(c => c.Priority) : query.OrderBy(c => c.Priority)
+            };
+
+            // Apply pagination
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
+
+            var courts = await query.ToListAsync();
+
             var activeOwnerPackage = await _context.Ownerpackages
                 .Where(op => op.OwnerId == ownerId && op.Status == "Active" && op.Startdate <= DateOnly.FromDateTime(DateTime.UtcNow) && op.Enddate >= DateOnly.FromDateTime(DateTime.UtcNow))
                 .OrderBy(op => op.Priority)
@@ -292,7 +500,7 @@ namespace GetSportAPI.Controllers
                     OwnerId = court.OwnerId,
                     OwnerName = court.Owner?.Fullname ?? "Unknown",
                     Location = court.Location,
-                    Imageurl = court.Imageurl,
+                    Imageurls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
                     Priceperhour = court.Priceperhour,
                     Status = court.Status,
                     Isactive = court.Isactive,
@@ -300,11 +508,24 @@ namespace GetSportAPI.Controllers
                     Startdate = court.Startdate,
                     Enddate = court.Enddate
                 };
-            })
-            .OrderBy(c => c.Priority) // Sort by priority (smallest first)
-            .ToList();
+            }).ToList();
 
-            return Ok(new { StatusCode = 200, Status = "Success", Message = "My courts retrieved successfully.", Data = responseData });
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "My courts retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
 
         [HttpPut("{id}")]
@@ -361,12 +582,22 @@ namespace GetSportAPI.Controllers
                 if (dto.Priority.HasValue) court.Priority = dto.Priority.Value;
                 if (dto.Startdate.HasValue) court.Startdate = dto.Startdate;
                 if (dto.Enddate.HasValue) court.Enddate = dto.Enddate;
-                if (dto.Image != null)
+
+                if (dto.Images != null && dto.Images.Any())
                 {
                     ImageService imageService = new ImageService(_environment);
-                    string? newImageUrl = await imageService.SaveImageAsync(dto.Image);
-                    if (newImageUrl != null) court.Imageurl = newImageUrl;
+                    var imageUrls = new List<string>();
+                    foreach (var image in dto.Images)
+                    {
+                        string? imageUrl = await imageService.SaveImageAsync(image);
+                        if (imageUrl != null)
+                        {
+                            imageUrls.Add(imageUrl);
+                        }
+                    }
+                    court.Imageurl = string.Join(",", imageUrls);
                 }
+
                 if (!string.IsNullOrEmpty(dto.Status) && isAdminOrStaff)
                 {
                     if (!_validStatuses.Contains(dto.Status) || dto.Status == CourtStatus.Deleted)
@@ -394,7 +625,6 @@ namespace GetSportAPI.Controllers
 
                 await _context.SaveChangesAsync();
 
-                // Check for active Ownerpackage to override court priority
                 int priority = court.Priority;
                 var activeOwnerPackage = await _context.Ownerpackages
                     .Where(op => op.OwnerId == court.OwnerId && op.Status == "Active" && op.Startdate <= DateOnly.FromDateTime(DateTime.UtcNow) && op.Enddate >= DateOnly.FromDateTime(DateTime.UtcNow))
@@ -412,7 +642,7 @@ namespace GetSportAPI.Controllers
                     OwnerId = court.OwnerId,
                     OwnerName = court.Owner?.Fullname ?? "Unknown",
                     Location = court.Location,
-                    Imageurl = court.Imageurl,
+                    Imageurls = court.Imageurl?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? new List<string>(),
                     Priceperhour = court.Priceperhour,
                     Status = court.Status,
                     Isactive = court.Isactive,

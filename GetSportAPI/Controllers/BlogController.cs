@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GetSportAPI.Models.Generated;
-using GetSportAPI.DTO;
 using GetSportAPI.Models.Enum;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Hosting;
-using System.ComponentModel.DataAnnotations;
+using GetSportAPI.DTO;
 using GetSportAPI.Utils;
+using System.ComponentModel.DataAnnotations;
+using GetSportAPI.Params;
 
 namespace GetSportAPI.Controllers
 {
@@ -21,8 +21,9 @@ namespace GetSportAPI.Controllers
     {
         private readonly GetSportContext _context;
         private readonly IWebHostEnvironment _environment;
-        private readonly string[] _validStatuses = { BlogStatus.Draft, BlogStatus.Published, BlogStatus.Banned };
+        private readonly string[] _validStatuses = { BlogStatus.Draft, BlogStatus.Published, BlogStatus.Banned, BlogStatus.Deleted };
         private readonly string[] _validCreateStatuses = { BlogStatus.Draft, BlogStatus.Published };
+        private readonly string[] _validSortFields = { "Title", "Createdat", "Updatedat" };
 
         public BlogController(GetSportContext context, IWebHostEnvironment environment)
         {
@@ -239,11 +240,31 @@ namespace GetSportAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll([FromQuery] string? status = null)
+        public async Task<ActionResult> GetAll([FromQuery] BlogFilterParams filterParams)
         {
-            if (!string.IsNullOrEmpty(status) && !_validStatuses.Contains(status))
+            if (!string.IsNullOrEmpty(filterParams.Status) && !_validStatuses.Contains(filterParams.Status))
             {
-                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Draft, Published, Banned." });
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Draft, Published, Banned, Deleted." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
             }
 
             bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
@@ -266,24 +287,60 @@ namespace GetSportAPI.Controllers
                 .Where(b => b.Status != BlogStatus.Deleted)
                 .AsQueryable();
 
+            // Apply filters
             if (!isAuthenticated)
             {
-                // Guests can only see Published blog posts
                 query = query.Where(b => b.Status == BlogStatus.Published);
             }
             else
             {
-                // Authenticated users
                 if (!isAdmin && accountId.HasValue)
                 {
                     query = query.Where(b => b.Status == BlogStatus.Published || b.Status == BlogStatus.Banned || (b.Status == BlogStatus.Draft && b.AccountId == accountId));
                 }
 
-                if (!string.IsNullOrEmpty(status))
+                if (!string.IsNullOrEmpty(filterParams.Status))
                 {
-                    query = query.Where(b => b.Status == status);
+                    query = query.Where(b => b.Status == filterParams.Status);
                 }
             }
+
+            // Search by title or short description
+            if (!string.IsNullOrEmpty(filterParams.Search))
+            {
+                query = query.Where(b => b.Title.ToLower().Contains(filterParams.Search.ToLower()) ||
+                                        (b.Shortdesc != null && b.Shortdesc.ToLower().Contains(filterParams.Search.ToLower())));
+            }
+
+            // Filter by date range
+            if (filterParams.StartDate.HasValue)
+            {
+                query = query.Where(b => b.Createdat >= filterParams.StartDate.Value);
+            }
+
+            if (filterParams.EndDate.HasValue)
+            {
+                query = query.Where(b => b.Createdat <= filterParams.EndDate.Value);
+            }
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply sorting
+            var sortBy = filterParams.SortBy?.ToLower() ?? "createdat";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "title" => isDescending ? query.OrderByDescending(b => b.Title) : query.OrderBy(b => b.Title),
+                "updatedat" => isDescending ? query.OrderByDescending(b => b.Updatedat) : query.OrderBy(b => b.Updatedat),
+                _ => isDescending ? query.OrderByDescending(b => b.Createdat) : query.OrderBy(b => b.Createdat)
+            };
+
+            // Apply pagination
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
 
             var blogs = await query.ToListAsync();
 
@@ -301,13 +358,53 @@ namespace GetSportAPI.Controllers
                 AuthorName = blog.Account?.Fullname ?? "Unknown"
             }).ToList();
 
-            return Ok(new { StatusCode = 200, Status = "Success", Message = "Blog posts retrieved successfully.", Data = responseData });
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "Blog posts retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
 
         [HttpGet("my")]
         [Authorize]
-        public async Task<ActionResult> GetMyPosts()
+        public async Task<ActionResult> GetMyPosts([FromQuery] BlogFilterParams filterParams)
         {
+            if (!string.IsNullOrEmpty(filterParams.Status) && !_validStatuses.Contains(filterParams.Status))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Draft, Published, Banned, Deleted." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortBy) && !_validSortFields.Contains(filterParams.SortBy, StringComparer.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = $"Invalid sort field. Allowed values are: {string.Join(", ", _validSortFields)}." });
+            }
+
+            if (!string.IsNullOrEmpty(filterParams.SortOrder) && filterParams.SortOrder.ToLower() != "asc" && filterParams.SortOrder.ToLower() != "desc")
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid sort order. Allowed values are: asc, desc." });
+            }
+
+            if (filterParams.Page < 1)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page number must be greater than 0." });
+            }
+
+            if (filterParams.PageSize < 1 || filterParams.PageSize > 100)
+            {
+                return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Page size must be between 1 and 100." });
+            }
+
             var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
@@ -320,10 +417,55 @@ namespace GetSportAPI.Controllers
                 return Unauthorized(new { StatusCode = 401, Status = "Unauthorized", Message = "Invalid user ID." });
             }
 
-            var blogs = await _context.Blogposts
+            var query = _context.Blogposts
                 .Include(b => b.Account)
                 .Where(b => b.AccountId == accountId && b.Status != BlogStatus.Deleted)
-                .ToListAsync();
+                .AsQueryable();
+
+            // Apply filters
+            if (!string.IsNullOrEmpty(filterParams.Status))
+            {
+                query = query.Where(b => b.Status == filterParams.Status);
+            }
+
+            // Search by title or short description
+            if (!string.IsNullOrEmpty(filterParams.Search))
+            {
+                query = query.Where(b => b.Title.ToLower().Contains(filterParams.Search.ToLower()) ||
+                                        (b.Shortdesc != null && b.Shortdesc.ToLower().Contains(filterParams.Search.ToLower())));
+            }
+
+            // Filter by date range
+            if (filterParams.StartDate.HasValue)
+            {
+                query = query.Where(b => b.Createdat >= filterParams.StartDate.Value);
+            }
+
+            if (filterParams.EndDate.HasValue)
+            {
+                query = query.Where(b => b.Createdat <= filterParams.EndDate.Value);
+            }
+
+            // Get total count for pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply sorting
+            var sortBy = filterParams.SortBy?.ToLower() ?? "createdat";
+            var isDescending = filterParams.SortOrder?.ToLower() == "desc";
+
+            query = sortBy switch
+            {
+                "title" => isDescending ? query.OrderByDescending(b => b.Title) : query.OrderBy(b => b.Title),
+                "updatedat" => isDescending ? query.OrderByDescending(b => b.Updatedat) : query.OrderBy(b => b.Updatedat),
+                _ => isDescending ? query.OrderByDescending(b => b.Createdat) : query.OrderBy(b => b.Createdat)
+            };
+
+            // Apply pagination
+            query = query
+                .Skip((filterParams.Page - 1) * filterParams.PageSize)
+                .Take(filterParams.PageSize);
+
+            var blogs = await query.ToListAsync();
 
             var responseData = blogs.Select(blog => new BlogResponseDto
             {
@@ -339,7 +481,22 @@ namespace GetSportAPI.Controllers
                 AuthorName = blog.Account?.Fullname ?? "Unknown"
             }).ToList();
 
-            return Ok(new { StatusCode = 200, Status = "Success", Message = "My blog posts retrieved successfully.", Data = responseData });
+            var paginationMetadata = new
+            {
+                TotalCount = totalCount,
+                PageSize = filterParams.PageSize,
+                CurrentPage = filterParams.Page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / filterParams.PageSize)
+            };
+
+            return Ok(new
+            {
+                StatusCode = 200,
+                Status = "Success",
+                Message = "My blog posts retrieved successfully.",
+                Pagination = paginationMetadata,
+                Data = responseData
+            });
         }
 
         [HttpPut("{id}")]
@@ -406,7 +563,7 @@ namespace GetSportAPI.Controllers
                 {
                     if (!_validStatuses.Contains(dto.Status))
                     {
-                        return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Draft, Published, Banned." });
+                        return BadRequest(new { StatusCode = 400, Status = "BadRequest", Message = "Invalid status. Allowed values are: Draft, Published, Banned, Deleted." });
                     }
                     blog.Status = dto.Status.Trim();
                 }
